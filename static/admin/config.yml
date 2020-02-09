@@ -12,6 +12,32 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "books"
+    label: "Books"
+    folder: "src/pages/books"
+    create: true 
+    slug: "book-{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "book-post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Genre", name: "tags", widget: "list"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Number of pages", name: "pages", widget: "number"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Date read", name: "read", widget: "date"}
+      - {label: "Own summery", name: "summery", widget: "markdown"}
+
+  - name: "booklist"
+    label: "Booklist"
+    folder: "src/pages/booklist"
+    create: true 
+    slug: "list-{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "booklist"}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Books", name: "books", widget: "relation", collection: "books", searchFields: ["title"], valueField: "title",  displayFields: ["title"]}
+
   - name: "blog"
     label: "Blog"
     folder: "src/pages/blog"
