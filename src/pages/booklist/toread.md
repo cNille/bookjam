@@ -1,7 +1,7 @@
 ---
 templateKey: booklist
-name: To Read 
+name: To Read
 description: Books i want to read
-books: 
-  - Nilles bok
+books: Nilles bok
 ---
+
