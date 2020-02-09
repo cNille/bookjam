@@ -36,7 +36,11 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "booklist"}
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
-      - {label: "Books", name: "books", widget: "relation", collection: "books", searchFields: ["title"], valueField: "title",  displayFields: ["title"]}
+      - label: "Books"
+        name: "books"
+        widget: "list"
+        allow_add: true
+        field: {label: "Book", name: "book", widget: "relation", collection: "books", searchFields: ["title"], valueField: "title",  displayFields: ["title"]}
 
   - name: "blog"
     label: "Blog"
