@@ -12,6 +12,10 @@ export const BookPostTemplate = ({
   description,
   tags,
   title,
+  author,
+  read,
+  pages,
+  summery,
   helmet
 }) => {
   const PostContent = contentComponent || Content;
@@ -25,7 +29,11 @@ export const BookPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            <p>{description}</p>
+            <p>Author: {author}</p>
+            <p>Nbr of pages: {pages}</p>
+            <p>Read: {new Date(read).toLocaleString()}</p>
+            <p>Description: {description}</p>
+            <p>My Summery: {summery}</p>
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -44,14 +52,6 @@ export const BookPostTemplate = ({
       </div>
     </section>
   );
-};
-
-BookPostTemplate.propTypes = {
-  content: PropTypes.node.isRequired,
-  contentComponent: PropTypes.func,
-  description: PropTypes.string,
-  title: PropTypes.string,
-  helmet: PropTypes.object
 };
 
 const BookPost = ({ data }) => {
@@ -74,6 +74,10 @@ const BookPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        author={post.frontmatter.author}
+        pages={post.frontmatter.pages}
+        summery={post.frontmatter.summery}
+        read={post.frontmatter.read}
       />
     </Layout>
   );
@@ -97,6 +101,7 @@ export const pageQuery = graphql`
         description
         tags
         summery
+        author
         pages
         read
       }
